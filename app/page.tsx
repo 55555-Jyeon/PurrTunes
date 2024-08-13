@@ -1,11 +1,5 @@
-import Search from "./search/page"
-
 const Home = () => {
-    return (
-        <div>
-            <Search />
-        </div>
-    )
+    return <div></div>
 }
 
 export default Home

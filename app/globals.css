@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 
+
 body {
   width: 100%;
   height: 100%;
   @apply bg-SYSTEM-SpringRain;
   font-family: "Noto Sans KR", sans-serif;
-
+  
   /* prevent Drag */
   -webkit-user-select: none;
   -moz-user-select: none;

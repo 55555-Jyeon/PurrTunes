@@ -22,7 +22,7 @@ const Suggestions = ({ suggestions, suggestionRef, onSuggestionClick }: Suggesti
             {suggestions.map((suggestion, index) => (
                 <div key={index} className="pb-[21px]">
                     <div
-                        className="hover:bg-ORIENTALPINK-50 hover:text-SYSTEM-white cursor-pointer text-GREY-30 text-2xl leading-none pt-[16px] pb-[12px] px-[48px] truncate rounded-lg"
+                        className="hover:bg-ORIENTALPINK-50 hover:text-SYSTEM-white cursor-pointer text-GREY-30 text-2xl leading-none py-[14px] px-12 truncate rounded-lg"
                         onClick={() => onSuggestionClick(suggestion)}
                     >
                         {suggestion}

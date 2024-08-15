@@ -29,8 +29,8 @@ const SearchInput = ({ keyword, onInputChange, onInputFocus, showSuggestions, in
                 className={`w-[850px] h-[70px] rounded-[35px] bg-WHITE-80 focus:outline-none focus:ring-0 px-[74px] text-2xl text-GREY-30 transition-all duration-300
       ${showSuggestions ? "border-none rounded-b-none" : "border-2 border-white"}`}
             />
-            <div className="absolute top-[24px] left-[28px]">
-                <Search width={24} height={24} color="#464646" />
+            <div className="absolute top-6 left-7">
+                <Search width={24} height={24} className="text-GREY-70" />
             </div>
         </div>
     )

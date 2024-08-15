@@ -4,9 +4,11 @@ export type AppProviderProps = {
     children: ReactNode
 }
 
+type WindowWithYT = Window & {
+    YT: any
+    onYouTubeIframeReady: () => void
+}
+
 declare global {
-    interface Window {
-        YT: any
-        onYouTubeIframeReady: () => void
-    }
+    interface Window extends WindowWithYT {}
 }

@@ -29,6 +29,28 @@ const config: Config = {
             }
             addUtilities(newUtilities)
         }),
+        plugin(function ({ addUtilities }: PluginAPI) {
+            const newUtilities = {
+                ".modalOutside": {
+                    background: "rgba(255,255,255,0.1)",
+                    position: "fixed",
+                    inset: "0",
+                },
+            }
+            addUtilities(newUtilities)
+        }),
+        plugin(function ({ addUtilities }: PluginAPI) {
+            const newUtilities = {
+                ".modalInside": {
+                    position: "relative",
+                    border: "1px solid white",
+                    backdropFilter: "blur(16px)",
+                    borderRadius: "45px",
+                    background: "rgba(255,255,255,0.2)",
+                },
+            }
+            addUtilities(newUtilities)
+        }),
     ],
 }
 export default config

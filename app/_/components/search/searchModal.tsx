@@ -30,15 +30,15 @@ const SearchModal = () => {
     }
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <div className="w-full flex justify-center">
-                <div className=" relative w-[95%] max-w-[1580px] h-[907px] border-2 border-white bg-WHITE-20 backdrop-filter backdrop-blur-lg p-[129px] rounded-[45px] shadow-lg">
-                    <div className="w-full flex justify-end absolute top-[37px] right-[32px]">
+        <div className="modalOutside flex-center">
+            <div className="w-full flex-justify">
+                <div className=" w-[95%] max-w-[1580px] h-[907px] p-[129px] modalInside">
+                    <div className="w-full flex justify-end absolute top-[37px] right-8">
                         <div className=" relative w-[42px] h-[42px] cursor-pointer" onClick={() => closeModal()}>
                             <Image src={"/XButton.svg"} alt="X" fill />
                         </div>
                     </div>
-                    <div className="flex justify-center">
+                    <div className="flex-justify">
                         <SearchBar onSearch={handleSearch} />
                     </div>
                 </div>

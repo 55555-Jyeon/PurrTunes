@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useSearchModalStore } from "../../_libs/zustand/modal"
+import { useSearchModalStore } from "../../libs/zustand/modal"
 import SearchBar from "./searchBar"
 import Image from "next/image"
 

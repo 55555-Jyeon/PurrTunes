@@ -1,7 +1,7 @@
 import { Search } from "lucide-react"
-import { SearchBarProps } from "../type"
 import React, { useEffect, useRef, useState } from "react"
-import { useSearch } from "@/app/_hooks/useSearch"
+import { useSearch } from "../../hooks/useSearch"
+import { SearchBarProps } from "./type"
 
 const SearchBar = ({ onSearch }: SearchBarProps) => {
     const { keyword, setKeyword, showSuggestions, setShowSuggestions, suggestions } = useSearch()

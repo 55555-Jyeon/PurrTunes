@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { fetchSuggestion } from "../_apis/youtubeAPI"
+import { fetchSuggestion } from "../apis/youtubeAPI"
 
 export const useSearch = () => {
     const [keyword, setKeyword] = useState("")

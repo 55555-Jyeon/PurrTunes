@@ -1,4 +1,7 @@
 import type { Config } from "tailwindcss"
+import { COLORS } from "./app/_/styles/color"
+import { PluginAPI } from "tailwindcss/types/config"
+const plugin = require("tailwindcss/plugin")
 
 const config: Config = {
     content: [
@@ -8,11 +11,8 @@ const config: Config = {
     ],
     theme: {
         extend: {
-            backgroundImage: {
-                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-                "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-            },
             colors: {
+                ...COLORS,
                 "white-80": "rgba(255, 255, 255, 0.8)",
                 "white-70": "rgba(255, 255, 255, 0.7)",
                 "white-60": "rgba(255, 255, 255, 0.6)",
@@ -21,6 +21,20 @@ const config: Config = {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        plugin(function ({ addUtilities }: PluginAPI) {
+            const newUtilities = {
+                ".header-glass-effect": {
+                    background: "rgba(255, 255, 255, 0.1)",
+                    borderRadius: "16px",
+                    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+                    backdropFilter: "blur(9px)",
+                    WebkitBackdropFilter: "blur(9px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                },
+            }
+            addUtilities(newUtilities)
+        }),
+    ],
 }
 export default config

@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss"
-import { COLORS } from "./app/_styles/color"
+import { COLORS } from "./app/_/styles/color"
 import { PluginAPI } from "tailwindcss/types/config"
 const plugin = require("tailwindcss/plugin")
 

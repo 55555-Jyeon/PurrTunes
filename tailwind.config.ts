@@ -13,11 +13,6 @@ const config: Config = {
         extend: {
             colors: {
                 ...COLORS,
-                "white-80": "rgba(255, 255, 255, 0.8)",
-                "white-70": "rgba(255, 255, 255, 0.7)",
-                "white-60": "rgba(255, 255, 255, 0.6)",
-                "white-20": "rgba(255,255,255, 0.2)",
-                "OrientalPink-50": "rgba(196,154,168, 0.5)",
             },
         },
     },

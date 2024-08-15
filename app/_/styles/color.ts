@@ -15,4 +15,13 @@ export const COLORS = {
     SNS: {
         kakao: "#FEE502",
     },
+    WHITE: {
+        80: "rgba(255, 255, 255, 0.8)",
+        70: "rgba(255, 255, 255, 0.7)",
+        60: "rgba(255, 255, 255, 0.6)",
+        20: "rgba(255, 255, 255, 0.2)",
+    },
+    ORIENTALPINK: {
+        50: "rgba(196,154,168, 0.5)",
+    },
 } as const

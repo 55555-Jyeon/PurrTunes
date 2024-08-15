@@ -3,7 +3,7 @@ import Image from "next/image"
 
 const Header = () => {
     return (
-        <div className="relative top-0 max-w-[1920px] w-full h-20 px-[120px] flex-items justify-between border-b header-glass-effect">
+        <div className="relative top-0 w-[1920px] max-w-full h-20 px-[120px] flex-items justify-between border-b header-glass-effect">
             <div>
                 <Image width={96} height={40} src="/logo.png" alt="purr-tunes logo" />
             </div>

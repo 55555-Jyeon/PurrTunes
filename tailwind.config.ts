@@ -21,7 +21,6 @@ const config: Config = {
             const newUtilities = {
                 ".header-glass-effect": {
                     background: "rgba(255, 255, 255, 0.1)",
-                    borderRadius: "16px",
                     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                     backdropFilter: "blur(9px)",
                     WebkitBackdropFilter: "blur(9px)",

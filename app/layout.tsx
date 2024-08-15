@@ -8,6 +8,9 @@ const NotoSans = Noto_Sans_KR({ subsets: ["latin"] })
 export const metadata: Metadata = {
     title: "PurrTunes",
     description: "recommendation by cat",
+    icons: {
+        icon: "/favicon.png",
+    },
 }
 
 export default function RootLayout({

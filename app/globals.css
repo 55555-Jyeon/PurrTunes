@@ -22,6 +22,17 @@ body {
   }
 }
 
+/* aligns */
+.flex-center {
+    @apply flex justify-center items-center;
+}
+.flex-items {
+  @apply flex items-center;
+}
+.flex-justify {
+  @apply flex justify-center;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

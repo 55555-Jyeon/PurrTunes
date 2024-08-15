@@ -1,6 +1,6 @@
 import { SuggestionsListProps } from "./type"
 
-export const SuggestionsList: React.FC<SuggestionsListProps> = ({ suggestions, onSuggestionClick }) => (
+export const SuggestionsList = ({ suggestions, onSuggestionClick }: SuggestionsListProps) => (
     <div className="absolute w-full mt-2 bg-white bg-opacity-90 rounded-lg shadow-lg z-10">
         {suggestions.map((suggestion, index) => (
             <div

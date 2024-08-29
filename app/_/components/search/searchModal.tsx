@@ -1,9 +1,9 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useSearchModalStore } from "../../libs/zustand/modal"
 import SearchBar from "./searchBar"
 import Image from "next/image"
+import { useSearchModal } from "../../libs/jotai/modal"
 
 /**
  *  @component SearchModal
@@ -18,14 +18,13 @@ import Image from "next/image"
  */
 
 const SearchModal = () => {
-    const { isOpen, closeModal } = useSearchModalStore()
+    const { isOpen, closeModal } = useSearchModal()
     const router = useRouter()
 
     if (!isOpen) return null
 
     const handleSearch = (keyword: string) => {
         router.push(`/search?q=${keyword}`)
-
         closeModal()
     }
 

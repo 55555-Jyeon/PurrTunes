@@ -2,7 +2,7 @@
 const nextConfig = {
     transpilePackages: ["lucide-react"],
     images: {
-        domains: ["i.maniadb.com"],
+        domains: ["i.maniadb.com", "lh3.googleusercontent.com"],
     },
 }
 

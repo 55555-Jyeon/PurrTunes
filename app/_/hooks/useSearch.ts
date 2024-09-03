@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+
+import useSWR from "swr"
 import { fetchSuggestion } from "../api/youtubeAPI"
 
 /**
@@ -26,23 +28,27 @@ import { fetchSuggestion } from "../api/youtubeAPI"
  */
 export const useSearch = () => {
     const [keyword, setKeyword] = useState("")
-    const [suggestions, setSuggestions] = useState<string[]>([])
     const [showSuggestions, setShowSuggestions] = useState<boolean>(false)
 
-    useEffect(() => {
-        const getData = setTimeout(async () => {
-            if (keyword) {
-                const result = await fetchSuggestion(keyword)
-                setSuggestions(result)
-                setShowSuggestions(result.length > 0)
-            } else {
-                setSuggestions([])
-                setShowSuggestions(false)
-            }
-        }, 100)
+    /**
+     * SWR fetcher 함수
+     * @param {string} key - SWR 키 문자열
+     * @returns {Promise<string[]>} 검색 제안 배열을 반환하는 Promise
+     */
+    const fetcher = (key: string) => {
+        const [, query] = key.split("?")
+        return fetchSuggestion(query)
+    }
 
-        return () => clearTimeout(getData)
-    }, [keyword])
+    const { data: suggestions = [] } = useSWR(keyword ? `api/suggestions?${keyword}` : null, fetcher, {
+        dedupingInterval: 100,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false,
+    })
+
+    useEffect(() => {
+        setShowSuggestions(suggestions.length > 0 && keyword !== "")
+    }, [suggestions, keyword])
 
     return {
         keyword,

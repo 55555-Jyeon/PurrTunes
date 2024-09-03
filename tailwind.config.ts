@@ -24,28 +24,18 @@ const config: Config = {
                     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                     backdropFilter: "blur(9px)",
                     WebkitBackdropFilter: "blur(9px)",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderBottom: "1px solid rgba(255, 255, 255, 1)",
                 },
-            }
-            addUtilities(newUtilities)
-        }),
-        plugin(function ({ addUtilities }: PluginAPI) {
-            const newUtilities = {
-                ".modalOutside": {
+                ".modal-outside": {
                     background: "rgba(255,255,255,0.1)",
                     position: "fixed",
                     inset: "0",
                 },
-            }
-            addUtilities(newUtilities)
-        }),
-        plugin(function ({ addUtilities }: PluginAPI) {
-            const newUtilities = {
-                ".modalInside": {
+                ".modal-inside": {
                     position: "relative",
                     border: "1px solid white",
-                    backdropFilter: "blur(16px)",
-                    borderRadius: "45px",
+                    backdropFilter: "blur(30px)",
+                    borderRadius: "24px",
                     background: "rgba(255,255,255,0.2)",
                 },
             }

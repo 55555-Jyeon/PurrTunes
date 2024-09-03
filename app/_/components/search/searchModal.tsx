@@ -29,9 +29,9 @@ const SearchModal = () => {
     }
 
     return (
-        <div className="modalOutside flex-center">
+        <div className="modal-outside flex-center">
             <div className="w-full flex-justify">
-                <div className=" w-[95%] max-w-[1580px] h-[907px] p-[129px] modalInside">
+                <div className=" w-[95%] max-w-[1580px] h-[907px] p-[129px] modal-inside">
                     <div className="w-full flex justify-end absolute top-[37px] right-8">
                         <div className=" relative w-[42px] h-[42px] cursor-pointer" onClick={() => closeModal()}>
                             <Image src={"/XButton.svg"} alt="X" fill />

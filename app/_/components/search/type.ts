@@ -21,3 +21,7 @@ export type SuggestionsProps = {
     onSuggestionClick: (suggestion: string) => void
     suggestionRef: React.RefObject<HTMLDivElement>
 }
+
+export type SearchResultProps = {
+    query: string
+}

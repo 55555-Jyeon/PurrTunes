@@ -1,17 +1,21 @@
-"use client"
-
 import { Suspense } from "react"
-import { SearchPageProps } from "./type"
-import SearchResult from "../_/components/search/searchResult"
+import { SearchPageProps, SearchResultType } from "./type"
+import SearchResult from "./_components/searchResult"
+import { fetchSearchResult } from "../_/api/youtubeAPI"
 
-const SearchPage = ({ searchParams }: SearchPageProps) => {
-    const query = searchParams.q
+const SearchPage = async ({ searchParams }: SearchPageProps) => {
+    const query = searchParams.q || ""
+    let initialResults: SearchResultType[] = []
+
+    if (query) {
+        initialResults = await fetchSearchResult(query)
+    }
 
     return (
         <div>
             <div>
                 <Suspense fallback={<div>Loading...</div>}>
-                    <SearchResult query={query} />
+                    <SearchResult query={query} initialResults={initialResults} />
                 </Suspense>
             </div>
         </div>

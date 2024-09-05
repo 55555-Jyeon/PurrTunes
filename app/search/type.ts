@@ -48,5 +48,5 @@ export type YouTubeIframeAPI = {
 }
 
 export type SearchPageProps = {
-    searchParams: { q: string }
+    searchParams: { q?: string }
 }

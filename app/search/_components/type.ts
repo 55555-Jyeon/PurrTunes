@@ -1,3 +1,4 @@
+import { SearchResultType } from "@/app/search/type"
 import React from "react"
 
 export type SuggestionsListProps = {
@@ -23,5 +24,6 @@ export type SuggestionsProps = {
 }
 
 export type SearchResultProps = {
+    initialResults: SearchResultType[]
     query: string
 }

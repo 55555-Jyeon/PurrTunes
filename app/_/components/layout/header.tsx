@@ -2,7 +2,7 @@
 
 import { Search } from "lucide-react"
 import Image from "next/image"
-import SearchModal from "../search/searchModal"
+import SearchModal from "../../../search/_components/searchModal"
 import Link from "next/link"
 import { useDialogAtom } from "../../libs/jotai/dialog"
 import MemberDialog from "./dialog"

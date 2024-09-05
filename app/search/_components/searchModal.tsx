@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation"
 import SearchBar from "./searchBar"
 import Image from "next/image"
-import { useSearchModal } from "../../libs/jotai/modal"
+import { useSearchModal } from "../../_/libs/jotai/modal"
 
 /**
  *  @component SearchModal

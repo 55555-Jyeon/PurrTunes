@@ -4,6 +4,13 @@ import { YouTubeSearchResponse } from "./type"
 const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY
 const YOUTUBE_URI = process.env.NEXT_PUBLIC_YOUTUBE_URI
 
+/**
+ * 주어진 입력에 대한 검색 제안을 가져온다.
+ *
+ * @async
+ * @param {string} input - 검색 제안을 위한 사용자 입력 문자열
+ * @returns {Promise<string[]>} 검색 제안 문자열 배열을 반환합니다. 오류 발생 시 빈 배열을 반환합니다.
+ */
 export const fetchSuggestion = async (input: string) => {
     try {
         const response = await fetch(
@@ -18,55 +25,40 @@ export const fetchSuggestion = async (input: string) => {
     }
 }
 
+/**
+ *
+ * @async
+ * @param {string} query - 검색할 쿼리 문자열
+ * @returns {Promise<SearchResultType[]>} 검색 결과 객체 배열을 반환
+ * @throws {Error} API 요청 중 에러 발생 시 에러를 던진다.
+ */
 export const fetchSearchResult = async (query: string): Promise<SearchResultType[]> => {
     if (!query) return []
 
+    const params = new URLSearchParams({
+        part: "snippet",
+        q: query,
+        key: YOUTUBE_API_KEY || "",
+        type: "video",
+        videoCategoryId: "10",
+        maxResults: "20",
+    })
+
     try {
-        const params = new URLSearchParams({
-            part: "snippet",
-            q: query,
-            key: YOUTUBE_API_KEY || "",
-            type: "video",
-            videoCategoryId: "10",
-            maxResults: "20",
-        })
+        const response = await fetch(`${YOUTUBE_URI}search?${params}`)
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
 
-        const url = `${YOUTUBE_URI}search?${params.toString()}`
-        console.log("Requesting URL:", url) // URL 로깅 추가
+        const { items = [] }: YouTubeSearchResponse = await response.json()
 
-        const response = await fetch(url)
-
-        if (!response.ok) {
-            const errorBody = await response.text()
-            console.error("API 응답 에러:", response.status, errorBody)
-            throw new Error(`HTTP error! status: ${response.status}, body: ${errorBody}`)
-        }
-
-        const data: YouTubeSearchResponse = await response.json()
-
-        if (!data.items || data.items.length === 0) {
-            console.warn("검색 결과가 없습니다.")
-            return []
-        }
-
-        return data.items.map(item => ({
-            id: item.id.videoId,
-            title: decodeURIComponent(item.snippet.title),
-            description: decodeURIComponent(item.snippet.description),
-            thumbnail: {
-                default: item.snippet.thumbnails.default,
-                medium: item.snippet.thumbnails.medium,
-                high: item.snippet.thumbnails.high,
-            },
-            channelTitle: item.snippet.channelTitle,
-            publishedAt: item.snippet.publishedAt,
+        return items.map(({ id, snippet }) => ({
+            id: id.videoId,
+            title: decodeURIComponent(snippet.title),
+            description: decodeURIComponent(snippet.description),
+            thumbnail: snippet.thumbnails,
+            channelTitle: snippet.channelTitle,
+            publishedAt: snippet.publishedAt,
         }))
     } catch (error) {
-        console.error("검색 결과 가져오기 오류:", error)
-        if (error instanceof Error) {
-            throw new Error(`검색 결과 가져오기 오류: ${error.message}`)
-        } else {
-            throw new Error("알 수 없는 오류가 발생했습니다.")
-        }
+        throw new Error(`검색 결과 가져오기 오류: ${error instanceof Error ? error.message : "알 수 없는 오류"}`)
     }
 }

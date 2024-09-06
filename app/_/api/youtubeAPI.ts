@@ -11,10 +11,10 @@ const YOUTUBE_URI = process.env.NEXT_PUBLIC_YOUTUBE_URI
  * @param {string} input - 검색 제안을 위한 사용자 입력 문자열
  * @returns {Promise<string[]>} 검색 제안 문자열 배열을 반환합니다. 오류 발생 시 빈 배열을 반환합니다.
  */
-export const fetchSuggestion = async (input: string) => {
+export const fetchSuggestion = async (searchString: string) => {
     try {
         const response = await fetch(
-            `${YOUTUBE_URI}search?part=snippet&q=${input}&key=${YOUTUBE_API_KEY}&type=video&videoCategoryId=10&maxResults=8`,
+            `${YOUTUBE_URI}search?part=snippet&q=${searchString}&key=${YOUTUBE_API_KEY}&type=video&videoCategoryId=10&maxResults=8`,
         )
         const data: YouTubeSearchResponse = await response.json()
 

@@ -1,3 +1,4 @@
+import { SearchResultType } from "@/app/search/type"
 import React from "react"
 
 export type SuggestionsListProps = {
@@ -20,4 +21,9 @@ export type SuggestionsProps = {
     suggestions: string[]
     onSuggestionClick: (suggestion: string) => void
     suggestionRef: React.RefObject<HTMLDivElement>
+}
+
+export type SearchResultProps = {
+    initialResults: SearchResultType[]
+    query: string
 }

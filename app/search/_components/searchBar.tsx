@@ -1,6 +1,6 @@
 import { Search } from "lucide-react"
 import React, { useEffect, useRef, useState } from "react"
-import { useSearch } from "../../hooks/useSearch"
+import { useSearch } from "../../_/hooks/useSearch"
 import { SearchBarProps } from "./type"
 import SearchInput from "./searchInput"
 import Suggestions from "./suggestions"

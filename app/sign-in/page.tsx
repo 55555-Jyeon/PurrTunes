@@ -2,6 +2,7 @@
 
 import { signIn } from "next-auth/react"
 import Image from "next/image"
+import { AUTH_PROVIDERS } from "../_/constants/authProviders"
 
 const SignIn = () => {
     return (
@@ -14,20 +15,22 @@ const SignIn = () => {
                     <div className="w-[260px] h-[1px] bg-GREY-50" />
                 </div>
                 <div className="flex-center flex-col my-4">
-                    <button
-                        onClick={() => signIn("google", { callbackUrl: "/" })}
-                        className="w-[480px] h-[72px] flex-center flex-row rounded-full bg-SYSTEM-white bg-opacity-50 hover:bg-opacity-100 transition-opcity duration-[600ms] my-2"
-                    >
-                        <Image width={32} height={32} className="mr-5" src={"/icon/google.svg"} alt="google login" />
-                        구글 계정으로 간편 로그인하기
-                    </button>
-                    <button
-                        onClick={() => signIn("kakao", { callbackUrl: "/" })}
-                        className="w-[480px] h-[72px] flex-center flex-row rounded-full bg-SNS-kakao bg-opacity-50 hover:bg-opacity-100 transition-opcity duration-[600ms] my-2"
-                    >
-                        <Image width={32} height={32} className="mr-5" src={"/icon/kakao.svg"} alt="kakao login" />
-                        카카오톡으로 간편 로그인하기
-                    </button>
+                    {AUTH_PROVIDERS.map(provider => (
+                        <button
+                            key={provider.name}
+                            onClick={() => signIn(provider.name, { callbackUrl: "/" })}
+                            className={`w-[480px] h-[72px] flex-center flex-row rounded-full ${provider.bgColor} opacity-50 hover:opacity-100 transition-opacity duration-600 my-2`}
+                        >
+                            <Image
+                                width={32}
+                                height={32}
+                                className="mr-5"
+                                src={provider.icon}
+                                alt={`${provider.name} login`}
+                            />
+                            {provider.displayName}으로 간편 로그인하기
+                        </button>
+                    ))}
                 </div>
             </div>
         </div>

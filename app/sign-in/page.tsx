@@ -3,11 +3,16 @@
 import { signIn } from "next-auth/react"
 import Image from "next/image"
 import { AUTH_PROVIDERS } from "../_/constants/authProviders"
+import { useModalClose } from "../_/hooks/useModalClose"
+import { useSignInModal } from "../_/libs/jotai/signInModal"
 
 const SignIn = () => {
+    const { closeModal } = useSignInModal()
+    const modalRef = useModalClose({ onClose: closeModal })
+
     return (
         <div className="modal-outside flex-center">
-            <div className="w-[895px] h-[582px] rounded-3xl modal-inside flex-center flex-col">
+            <div ref={modalRef} className="w-[895px] h-[582px] rounded-3xl modal-inside flex-center flex-col">
                 <Image width={249} height={99} src={"/PurrTunes.png"} alt="purrTunes logo" />
                 <div className="w-full flex-center flex-row my-8">
                     <div className="w-[260px] h-[1px] bg-GREY-50" />

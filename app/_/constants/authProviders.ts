@@ -1,4 +1,6 @@
-export const AUTH_PROVIDERS = [
+import { AuthProviderType } from "./type"
+
+export const AUTH_PROVIDERS: AuthProviderType[] = [
     {
         name: "google",
         displayName: "구글 계정",

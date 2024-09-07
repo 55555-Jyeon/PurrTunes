@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation"
 import SearchBar from "./searchBar"
-import Image from "next/image"
 import { useSearchModal } from "@/app/_/libs/jotai/searchModal"
+import { CircleX } from "lucide-react"
 
 /**
  *  @component SearchModal
@@ -31,10 +31,10 @@ const SearchModal = () => {
     return (
         <div className="modal-outside flex-center">
             <div className="w-full flex-justify">
-                <div className=" w-[95%] max-w-[1580px] h-[907px] p-[129px] modal-inside">
+                <div className="w-[95%] max-w-[1580px] h-[907px] p-[129px] modal-inside">
                     <div className="w-full flex justify-end absolute top-[37px] right-8">
                         <div className=" relative w-[42px] h-[42px] cursor-pointer" onClick={() => closeModal()}>
-                            <Image src={"/XButton.svg"} alt="X" fill />
+                            <CircleX color="#ffffff" size={44} strokeWidth={1} />
                         </div>
                     </div>
                     <div className="flex-justify">

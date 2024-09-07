@@ -21,7 +21,7 @@ const Header = () => {
     return (
         <>
             {isSearchOpen && <SearchModal />}
-            <div className="fixed top-0 w-[1920px] max-w-full h-20 px-[120px] flex-items justify-between border-b header-glass-effect z-10">
+            <div className="fixed top-0 w-full h-20 px-[120px] flex-items justify-between border-b header-glass-effect z-10">
                 <Link href="/" className=" relative w-24 h-10">
                     <Image fill src="/logo.png" alt="purr-tunes logo" className="cursor-pointer" />
                 </Link>

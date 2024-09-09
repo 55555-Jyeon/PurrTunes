@@ -5,6 +5,41 @@ const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY
 const YOUTUBE_URI = process.env.NEXT_PUBLIC_YOUTUBE_URI
 
 /**
+ * @function fetchPopularAlbums 유튜브 API에서 추천 앨범 목록을 가져오는 함수
+ *
+ * @async
+ * @returns {Promise<SearchResultType[]>} 추천 앨범 객체 배열을 반환
+ */
+export const fetchPopularAlbums = async (): Promise<SearchResultType[]> => {
+    const params = new URLSearchParams({
+        part: "snippet",
+        chart: "mostPopular",
+        key: YOUTUBE_API_KEY || "",
+        type: "video",
+        videoCategoryId: "10", // 음악 카테고리 ID
+        maxResults: "8",
+    })
+
+    try {
+        const response = await fetch(`${YOUTUBE_URI}videos?${params}`)
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+
+        const { items = [] }: YouTubeSearchResponse = await response.json()
+
+        return items.map(({ id, snippet }) => ({
+            id: id.videoId,
+            title: decodeURIComponent(snippet.title),
+            description: decodeURIComponent(snippet.description),
+            thumbnail: snippet.thumbnails,
+            channelTitle: snippet.channelTitle,
+            publishedAt: snippet.publishedAt,
+        }))
+    } catch {
+        return []
+    }
+}
+
+/**
  * 주어진 입력에 대한 검색 제안을 가져온다.
  *
  * @async

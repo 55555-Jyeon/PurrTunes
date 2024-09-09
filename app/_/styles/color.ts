@@ -7,6 +7,7 @@ export const COLORS = {
         WePeep: "#F6D2DE",
     },
     GREY: {
+        10: "#dddddd",
         30: "#797979",
         50: "#747474",
         70: "#464646",

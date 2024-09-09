@@ -3,7 +3,7 @@
 import useSWR from "swr"
 import { SearchResultType } from "../search/type"
 import { fetchPopularAlbums } from "../_/api/youtubeAPI"
-import AlbumCard from "./albumCard"
+import AlbumCard from "../_/components/common/albumCard"
 
 const MainAlbums = () => {
     const {

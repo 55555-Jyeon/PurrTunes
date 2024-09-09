@@ -5,7 +5,7 @@ import { SearchResultProps } from "./type"
 import { fetchSearchResult } from "../../_/api/youtubeAPI"
 import { SearchResultType } from "@/app/search/type"
 import { useEffect, useState } from "react"
-import AlbumCard from "@/app/_/components/albumCard"
+import AlbumCard from "@/app/_/components/common/albumCard"
 
 /**
  * SearchResult 컴포넌트
@@ -42,10 +42,16 @@ const SearchResult = ({ query, initialResults }: SearchResultProps) => {
     if (!results || results.length === 0) return <div>검색 결과가 없습니다.</div>
 
     return (
-        <div className=" grid grid-cols-4 gap-4">
-            {results.map(result => (
-                <AlbumCard key={result.id} album={result} />
-            ))}
+        <div className="my-20">
+            <h1 className="text-3xl text-GREY-70 mb-10">
+                <span className="text-SYSTEM-OrientalPink">{query}</span>에 대한 검색 결과{" "}
+                <span className="text-SYSTEM-OrientalPink">({results.length})</span>
+            </h1>
+            <div className="grid grid-cols-4 gap-4">
+                {results.map(result => (
+                    <AlbumCard key={result.id} album={result} />
+                ))}
+            </div>
         </div>
     )
 }

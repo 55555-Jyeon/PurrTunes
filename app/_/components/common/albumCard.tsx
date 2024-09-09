@@ -1,15 +1,16 @@
-import { SearchResultType } from "@/app/search/type"
 import Image from "next/image"
-import { truncateText } from "../_/utils/length-helper"
+import { truncateText } from "../../utils/length-helper"
+import { AlbumCardProps } from "./type"
 
-const AlbumCard = ({ album }: { album: SearchResultType }) => {
+const AlbumCard = ({ album }: AlbumCardProps) => {
     const { title, description, thumbnail } = album
 
     return (
         <div className="w-[300px] h-[300px] overflow-hidden relative group">
             <Image
-                width={300}
-                height={300}
+                fill
+                sizes="300px"
+                priority
                 src={thumbnail?.high?.url}
                 alt={title}
                 className="object-cover object-center w-full h-full cursor-pointer"

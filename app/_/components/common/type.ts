@@ -1,5 +1,5 @@
-import { SearchResultType } from "@/app/search/type"
+import { AlbumType } from "@/app/search/type"
 
 export type AlbumCardProps = {
-    album: SearchResultType
+    album: AlbumType
 }

@@ -3,7 +3,7 @@
 import useSWR from "swr"
 import { SearchResultProps } from "./type"
 import { fetchSearchResult } from "../../_/api/youtubeAPI"
-import { SearchResultType } from "@/app/search/type"
+import { AlbumType } from "@/app/search/type"
 import { useEffect, useState } from "react"
 import AlbumCard from "@/app/_/components/common/albumCard"
 
@@ -15,7 +15,7 @@ import AlbumCard from "@/app/_/components/common/albumCard"
  *
  * @param {Object} props - 컴포넌트 props
  * @param {string} props.query - 검색 쿼리 문자열
- * @param {SearchResultType[]} props.initialResults - 서버에서 가져온 초기 검색 결과
+ * @param {AlbumType[]} props.initialResults - 서버에서 가져온 초기 검색 결과
  *
  * @returns {JSX.Element}
  */
@@ -31,7 +31,7 @@ const SearchResult = ({ query, initialResults }: SearchResultProps) => {
         data: results,
         error,
         isLoading,
-    } = useSWR<SearchResultType[]>(isClient ? [query] : null, () => fetchSearchResult(query), {
+    } = useSWR<AlbumType[]>(isClient ? [query] : null, () => fetchSearchResult(query), {
         fallbackData: initialResults,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,

@@ -1,4 +1,4 @@
-import { SearchResultType } from "@/app/search/type"
+import { AlbumType } from "@/app/search/type"
 import { YouTubeSearchResponse } from "./type"
 
 const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY
@@ -8,9 +8,9 @@ const YOUTUBE_URI = process.env.NEXT_PUBLIC_YOUTUBE_URI
  * @function fetchPopularAlbums 유튜브 API에서 추천 앨범 목록을 가져오는 함수
  *
  * @async
- * @returns {Promise<SearchResultType[]>} 추천 앨범 객체 배열을 반환
+ * @returns {Promise<AlbumType[]>} 추천 앨범 객체 배열을 반환
  */
-export const fetchPopularAlbums = async (): Promise<SearchResultType[]> => {
+export const fetchPopularAlbums = async (): Promise<AlbumType[]> => {
     const params = new URLSearchParams({
         part: "snippet",
         chart: "mostPopular",
@@ -64,10 +64,10 @@ export const fetchSuggestion = async (searchString: string) => {
  *
  * @async
  * @param {string} query - 검색할 쿼리 문자열
- * @returns {Promise<SearchResultType[]>} 검색 결과 객체 배열을 반환
+ * @returns {Promise<AlbumType[]>} 검색 결과 객체 배열을 반환
  * @throws {Error} API 요청 중 에러 발생 시 에러를 던진다.
  */
-export const fetchSearchResult = async (query: string): Promise<SearchResultType[]> => {
+export const fetchSearchResult = async (query: string): Promise<AlbumType[]> => {
     if (!query) return []
 
     const params = new URLSearchParams({

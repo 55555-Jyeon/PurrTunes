@@ -1,7 +1,7 @@
 "use client"
 
 import useSWR from "swr"
-import { SearchResultType } from "../search/type"
+import { AlbumType } from "../search/type"
 import { fetchPopularAlbums } from "../_/api/youtubeAPI"
 import AlbumCard from "../_/components/common/albumCard"
 
@@ -10,7 +10,7 @@ const MainAlbums = () => {
         data: albums,
         error,
         isLoading,
-    } = useSWR<SearchResultType[]>("popular-albums", fetchPopularAlbums, {
+    } = useSWR<AlbumType[]>("popular-albums", fetchPopularAlbums, {
         revalidateOnFocus: false,
         revalidateOnReconnect: false,
     })

@@ -1,4 +1,4 @@
-import { SearchResultType } from "@/app/search/type"
+import { AlbumType } from "@/app/search/type"
 import React from "react"
 
 export type SuggestionsListProps = {
@@ -24,6 +24,6 @@ export type SuggestionsProps = {
 }
 
 export type SearchResultProps = {
-    initialResults: SearchResultType[]
+    initialResults: AlbumType[]
     query: string
 }

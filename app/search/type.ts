@@ -1,6 +1,6 @@
 import { YouTubeThumbnail } from "../_/api/type"
 
-export type SearchResultType = {
+export type AlbumType = {
     id: string
     title: string
     thumbnail: Thumbnail

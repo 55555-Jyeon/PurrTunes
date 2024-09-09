@@ -29,7 +29,7 @@ const SearchModal = () => {
     }
 
     return (
-        <div className="modal-outside flex-center">
+        <div className="modal-outside flex-center z-50">
             <div className="w-full flex-justify">
                 <div className="w-[95%] max-w-[1580px] h-[907px] p-[129px] modal-inside">
                     <div className="w-full flex justify-end absolute top-[37px] right-8">

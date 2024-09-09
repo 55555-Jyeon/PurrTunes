@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import { SearchPageProps, SearchResultType } from "./type"
+import { SearchPageProps, AlbumType } from "./type"
 import SearchResult from "./_components/searchResult"
 import { fetchSearchResult } from "../_/api/youtubeAPI"
 
@@ -20,7 +20,7 @@ import { fetchSearchResult } from "../_/api/youtubeAPI"
 
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
     const query = searchParams.q || ""
-    let initialResults: SearchResultType[] = []
+    let initialResults: AlbumType[] = []
 
     if (query) {
         initialResults = await fetchSearchResult(query)

@@ -11,7 +11,7 @@ const SignIn = () => {
     const modalRef = useModalClose({ onClose: closeModal })
 
     return (
-        <div className="modal-outside flex-center">
+        <div className="modal-outside flex-center z-50">
             <div ref={modalRef} className="w-[895px] h-[582px] rounded-3xl modal-inside flex-center flex-col">
                 <Image width={249} height={99} src={"/PurrTunes.png"} alt="purrTunes logo" />
                 <div className="w-full flex-center flex-row my-8">

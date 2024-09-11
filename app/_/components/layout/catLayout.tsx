@@ -1,20 +1,19 @@
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
 const CatLayout = () => {
     const [position, setPosition] = useState<number>(50)
-    const [direction, setDirection] = useState(1)
-    const [speed, setSpeed] = useState(0.5)
+    const directionRef = useRef(1)
+    const speedRef = useRef(0.5)
 
     useEffect(() => {
         const moveInterval = setInterval(() => {
-            setPosition((prevPosition: number) => {
-                const randomMove = (Math.random() - 0.5) * 2
-                const newPosition = prevPosition + direction * speed + randomMove
+            setPosition(prevPosition => {
+                const newPosition = prevPosition + directionRef.current * speedRef.current
 
                 if (newPosition > 95 || newPosition < 0) {
-                    setDirection((prevDirection: number) => -prevDirection)
-                    setSpeed(Math.random() * 0.5 + 0.3)
+                    directionRef.current *= -1
+                    speedRef.current = Math.random() * 0.5 + 0.2
                     return prevPosition
                 }
                 return newPosition
@@ -22,10 +21,10 @@ const CatLayout = () => {
         }, 50)
 
         return () => clearInterval(moveInterval)
-    }, [direction, speed])
+    }, [])
 
     return (
-        <div className="relative w-[1920px] h-40 overflow-hidden">
+        <div className="relative w-[2480px] h-40 overflow-hidden">
             <div
                 className="absolute bottom-0 transition-all duration-[50ms] ease-linear"
                 style={{ left: `${position}%` }}
@@ -35,7 +34,7 @@ const CatLayout = () => {
                         src={"/right_working_cat.gif"}
                         alt="cat"
                         fill
-                        className={`text-gray-700 transition-transform duration-300 ${direction > 0 ? "scale-x-1" : "scale-x-[-1]"}`}
+                        className={`text-gray-700 transition-transform duration-300 ${directionRef.current > 0 ? "scale-x-1" : "scale-x-[-1]"}`}
                     />
                 </div>
             </div>

@@ -5,12 +5,12 @@ import Image from "next/image"
 import SearchModal from "../../../search/_components/searchModal"
 import Link from "next/link"
 import { useDialogAtom } from "../../libs/jotai/dialog"
-import MemberDialog from "./dialog"
 import { useSearchModal } from "../../libs/jotai/searchModal"
-import AuthStatusButton from "./authStatus"
 import { useSession } from "next-auth/react"
 import { useSignInModal } from "../../libs/jotai/signInModal"
 import SignIn from "@/app/sign-in/page"
+import AuthStatusButton from "./membersOnly/authStatus"
+import MemberDialog from "./membersOnly/dialog"
 
 const Header = () => {
     const { isOpen: isSearchOpen, openModal: openSearchModal } = useSearchModal()

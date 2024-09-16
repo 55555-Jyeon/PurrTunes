@@ -1,7 +1,7 @@
+import { useDialogAtom } from "@/app/_/libs/jotai/dialog"
+import { useSignInModal } from "@/app/_/libs/jotai/signInModal"
 import { useSession } from "next-auth/react"
 import Image from "next/image"
-import { useDialogAtom } from "../../libs/jotai/dialog"
-import { useSignInModal } from "../../libs/jotai/signInModal"
 
 const AuthStatusButton = () => {
     const { data: userData } = useSession()

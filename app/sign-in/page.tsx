@@ -15,9 +15,9 @@ const SignIn = () => {
             <div ref={modalRef} className="w-[895px] h-[582px] rounded-3xl modal-inside flex-center flex-col">
                 <Image width={249} height={99} src={"/PurrTunes.png"} alt="purrTunes logo" />
                 <div className="w-full flex-center flex-row my-8">
-                    <div className="w-[260px] h-[1px] bg-GREY-50" />
-                    <p className="text-GREY-50 mx-10">SNS 간편 로그인</p>
-                    <div className="w-[260px] h-[1px] bg-GREY-50" />
+                    <div className="w-[260px] h-[1px] bg-GREY-70" />
+                    <p className="text-GREY-70 mx-10">SNS 간편 로그인</p>
+                    <div className="w-[260px] h-[1px] bg-GREY-70" />
                 </div>
                 <div className="flex-center flex-col my-4">
                     {AUTH_PROVIDERS.map(provider => (

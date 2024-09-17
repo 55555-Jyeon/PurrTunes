@@ -9,6 +9,7 @@ export const DialogList: DialogListType[] = [
         onClick: async (router: AppRouterInstance) => {
             await signOut({ redirect: false })
             router.push("/")
+            alert("정상적으로 로그아웃되었습니다!")
         },
     },
 ]

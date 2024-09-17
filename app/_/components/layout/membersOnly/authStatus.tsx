@@ -15,7 +15,7 @@ const AuthStatusButton = () => {
                     onClick={toggleDialog}
                     className="relative w-12 h-12 rounded-full overflow-hidden ml-[30px] cursor-pointer"
                 >
-                    <Image fill src={userData.user.image || ""} alt="profile" />
+                    <Image fill priority sizes="48" src={userData.user.image || ""} alt="profile" />
                 </div>
             ) : (
                 <button

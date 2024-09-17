@@ -22,8 +22,15 @@ const Header = () => {
         <>
             {isSearchOpen && <SearchModal />}
             <div className="fixed top-0 w-full h-20 px-[120px] flex-items justify-between border-b header-glass-effect z-10">
-                <Link href="/" className=" relative w-24 h-10">
-                    <Image fill src="/logo.png" alt="purr-tunes logo" className="cursor-pointer" />
+                <Link href="/" className="relative w-24 h-10">
+                    <Image
+                        priority
+                        fill
+                        sizes="96px"
+                        src="/logo.png"
+                        alt="purr-tunes logo"
+                        className="cursor-pointer"
+                    />
                 </Link>
                 <div className="flex-center">
                     <Search color="#464646" size={24} onClick={() => openSearchModal()} className="cursor-pointer" />

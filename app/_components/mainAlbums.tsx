@@ -22,8 +22,8 @@ const MainAlbums = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-3xl text-GREY-70 mb-10">인기 재생 목록</h1>
             <div className="w-[1335px] h-[644px] grid grid-cols-4 gap-4">
-                {albums.map(album => (
-                    <AlbumCard key={album.id} album={album} />
+                {albums.map((album, index) => (
+                    <AlbumCard key={album.id ? album.id : index} album={album} />
                 ))}
             </div>
         </div>

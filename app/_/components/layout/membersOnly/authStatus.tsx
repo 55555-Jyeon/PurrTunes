@@ -1,7 +1,7 @@
+import { useDialogAtom } from "@/app/_/libs/jotai/dialog"
+import { useSignInModal } from "@/app/_/libs/jotai/signInModal"
 import { useSession } from "next-auth/react"
 import Image from "next/image"
-import { useDialogAtom } from "../../libs/jotai/dialog"
-import { useSignInModal } from "../../libs/jotai/signInModal"
 
 const AuthStatusButton = () => {
     const { data: userData } = useSession()
@@ -15,7 +15,7 @@ const AuthStatusButton = () => {
                     onClick={toggleDialog}
                     className="relative w-12 h-12 rounded-full overflow-hidden ml-[30px] cursor-pointer"
                 >
-                    <Image fill src={userData.user.image || ""} alt="profile" />
+                    <Image fill priority sizes="48" src={userData.user.image || ""} alt="profile" />
                 </div>
             ) : (
                 <button

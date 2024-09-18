@@ -38,7 +38,7 @@ const CatLayout = () => {
                             alt="cat"
                             fill
                             sizes="auto"
-                            className={`text-gray-700 transition-transform duration-300 ${directionRef.current > 0 ? "scale-x-1" : "scale-x-[-1]"}`}
+                            className={`transition-transform duration-300 ${directionRef.current > 0 ? "scale-x-1" : "scale-x-[-1]"}`}
                         />
                     </div>
                 </div>

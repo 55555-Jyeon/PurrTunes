@@ -32,11 +32,12 @@ const CatLayout = () => {
                     className="absolute bottom-0 transition-all duration-[50ms] ease-linear"
                     style={{ left: `${position}%` }}
                 >
-                    <div className="w-[200px] h-[120px]">
+                    <div className=" relative w-[200px] h-[120px]">
                         <Image
                             src={"/right_working_cat.gif"}
                             alt="cat"
                             fill
+                            sizes="auto"
                             className={`text-gray-700 transition-transform duration-300 ${directionRef.current > 0 ? "scale-x-1" : "scale-x-[-1]"}`}
                         />
                     </div>

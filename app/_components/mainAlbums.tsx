@@ -4,6 +4,7 @@ import useSWR from "swr"
 import { AlbumType } from "../search/type"
 import { fetchPopularAlbums } from "../_/api/youtubeAPI"
 import AlbumCard from "../_/components/common/albumCard"
+import CatLayout from "../_/components/layout/catLayout"
 
 const MainAlbums = () => {
     const {
@@ -26,6 +27,7 @@ const MainAlbums = () => {
                     <AlbumCard key={album.id ? album.id : index} album={album} />
                 ))}
             </div>
+            <CatLayout />
         </div>
     )
 }

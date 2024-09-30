@@ -7,6 +7,7 @@ export type AppProviderProps = {
 type WindowWithYT = Window & {
     YT: any
     onYouTubeIframeReady: () => void
+    onYoutubeIframeAPIReady: () => void
 }
 
 declare global {

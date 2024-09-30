@@ -20,8 +20,6 @@ const MainAlbums = () => {
     })
 
     const handleAlbumClick = (album: AlbumType) => {
-        console.log(album)
-        console.log("click")
         setSelectAlbum(album)
     }
 

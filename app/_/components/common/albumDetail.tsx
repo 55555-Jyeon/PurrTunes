@@ -1,30 +1,35 @@
 import Image from "next/image"
 import { AlbumDetailProps } from "./type"
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
+import YoutubePlayer from "./youtubePlayer"
 
 const AlbumDetail = ({ album, onClose }: AlbumDetailProps) => {
-    const audioRef = useRef<HTMLAudioElement>(null)
     const [isPlaying, setIsPlaying] = useState(false)
+    const [player, setPlayer] = useState<any>(null)
 
-    useEffect(() => {
-        if (audioRef.current) {
-            if (isPlaying) {
-                audioRef.current.play()
-            } else {
-                audioRef.current.pause()
-            }
-        }
-    }, [isPlaying])
+    const onReady = (event: any) => {
+        setPlayer(event.target)
+    }
+
+    const onStateChange = (state: number) => {
+        setIsPlaying(state === 1) // 1 means the video is playing
+    }
 
     const togglePlay = () => {
-        setIsPlaying(!isPlaying)
+        if (player) {
+            if (isPlaying) {
+                player.pauseVideo()
+            } else {
+                player.playVideo()
+            }
+        }
     }
 
     return (
         <div className="fixed inset-0 z-50 overflow-hidden">
-            <div className="w-[500px] h-[500px] absolute bottom-0 right-0 ">
+            <div className="w-[500px] h-[500px] absolute bottom-0 right-0">
                 <div
-                    className=" w-full h-full bg-cover bg-center blur-md "
+                    className="w-full h-full bg-cover bg-center blur-md"
                     style={{ backgroundImage: `url(${album.thumbnail?.high?.url})` }}
                 ></div>
                 <div className="w-[500px] h-[500px] absolute bottom-0 right-0 bg-black bg-opacity-30"></div>
@@ -52,7 +57,6 @@ const AlbumDetail = ({ album, onClose }: AlbumDetailProps) => {
                     </svg>
                 </button>
                 <div className="absolute bottom-10 left-10 z-20">
-                    {/* <audio ref={audioRef} src={album.audioUrl} /> */}
                     <button
                         onClick={togglePlay}
                         className="bg-white text-black rounded-full p-3 hover:bg-gray-200 transition-colors duration-200"
@@ -88,7 +92,9 @@ const AlbumDetail = ({ album, onClose }: AlbumDetailProps) => {
                     <span className="text-white ml-4 text-lg">{album.title}</span>
                 </div>
             </div>
+            <YoutubePlayer videoId={album.id} onReady={onReady} onStateChange={onStateChange} />
         </div>
     )
 }
+
 export default AlbumDetail

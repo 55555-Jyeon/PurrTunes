@@ -16,6 +16,7 @@ export type Thumbnail = {
 }
 
 export type YouTubePlayer = {
+    destroy(): void
     loadVideoById: (videoId: string) => void
     playVideo: () => void
     pauseVideo: () => void

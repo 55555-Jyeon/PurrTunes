@@ -2,11 +2,17 @@ import Image from "next/image"
 import { truncateText } from "../../utils/length-helper"
 import { AlbumCardProps } from "./type"
 
-const AlbumCard = ({ album }: AlbumCardProps) => {
+const AlbumCard = ({ album, onClick }: AlbumCardProps) => {
     const { title, description, thumbnail } = album
 
+    const handleClick = () => {
+        if (onClick) {
+            onClick(album)
+        }
+    }
+
     return (
-        <div className="w-[300px] h-[300px] overflow-hidden relative group">
+        <div className="w-[300px] h-[300px] overflow-hidden relative group cursor-pointer" onClick={handleClick}>
             <Image
                 fill
                 sizes="300px"

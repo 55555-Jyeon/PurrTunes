@@ -26,13 +26,13 @@ export const fetchPopularAlbums = async (): Promise<AlbumType[]> => {
 
         const { items = [] }: YouTubeSearchResponse = await response.json()
 
-        return items.map(({ id, snippet }) => ({
-            id: id.videoId,
-            title: decodeURIComponent(snippet.title),
-            description: decodeURIComponent(snippet.description),
-            thumbnail: snippet.thumbnails,
-            channelTitle: snippet.channelTitle,
-            publishedAt: snippet.publishedAt,
+        return items.map(item => ({
+            id: item.id,
+            title: decodeURIComponent(item.snippet.title),
+            description: decodeURIComponent(item.snippet.description),
+            thumbnail: item.snippet.thumbnails,
+            channelTitle: item.snippet.channelTitle,
+            publishedAt: item.snippet.publishedAt,
         }))
     } catch {
         return []
@@ -85,13 +85,13 @@ export const fetchSearchResult = async (query: string): Promise<AlbumType[]> => 
 
         const { items = [] }: YouTubeSearchResponse = await response.json()
 
-        return items.map(({ id, snippet }) => ({
-            id: id.videoId,
-            title: decodeURIComponent(snippet.title),
-            description: decodeURIComponent(snippet.description),
-            thumbnail: snippet.thumbnails,
-            channelTitle: snippet.channelTitle,
-            publishedAt: snippet.publishedAt,
+        return items.map(item => ({
+            id: item.id,
+            title: decodeURIComponent(item.snippet.title),
+            description: decodeURIComponent(item.snippet.description),
+            thumbnail: item.snippet.thumbnails,
+            channelTitle: item.snippet.channelTitle,
+            publishedAt: item.snippet.publishedAt,
         }))
     } catch (error) {
         throw new Error(`검색 결과 가져오기 오류: ${error instanceof Error ? error.message : "알 수 없는 오류"}`)

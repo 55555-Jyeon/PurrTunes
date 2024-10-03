@@ -5,7 +5,7 @@ import { AlbumType } from "../search/type"
 import { fetchPopularAlbums } from "../_/api/youtubeAPI"
 import AlbumCard from "../_/components/common/albumCard"
 import { useState } from "react"
-import AlbumDetail from "../_/components/common/albumDetail"
+import AlbumDetail from "./albumDetail/albumDetail"
 
 const MainAlbums = () => {
     const [selectAlbum, setSelectAlbum] = useState<AlbumType | null>(null)

@@ -1,6 +1,13 @@
 import { Pause, Play } from "lucide-react"
 import { PlayButtonProps } from "./type"
 
+/**
+ *
+ * @param {Object} props
+ * @param {() => void} props.togglePlay
+ * @param {boolean} props.isPlaying
+ * @returns {JSX.Element} 재생 / 일시정지 버튼
+ */
 const PlayButton = ({ togglePlay, isPlaying }: PlayButtonProps) => {
     return (
         <button

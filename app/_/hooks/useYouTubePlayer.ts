@@ -5,8 +5,17 @@ import { YTPlayer } from "./type"
 /**
  * YouTube 플레이어 초기화 및 제어할 수 있는 커스텀 훅
  *
+ * YouTube IFrame API를 사용하여 비디오 플레이어를 보여줍니다.
+ *
  * @param {string} videoId
- * @returns {{}}
+ * @returns {{
+ *      Player: YTPlayer | null,
+ *      isPlaying: boolean,
+ *      playerRef: React.RefObject<HTMLDivElement>
+ * }}
+ *      - player: YouTube 플레이어, 준비가 되지않으면 null
+ *      - isPlaying: 현재 비디오 재생 상태
+ *      - playerRef: 플레이어 DOM ref
  */
 
 export const useYouTubePlayer = (videoId: string) => {

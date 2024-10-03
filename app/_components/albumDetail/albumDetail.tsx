@@ -1,9 +1,18 @@
 import { useYouTubePlayer } from "../../_/hooks/useYouTubePlayer"
 import { AlbumDetailProps } from "./type"
 import AlbumImage from "./albumImage"
-import { Pause, Play, X } from "lucide-react"
+import { X } from "lucide-react"
 import PlayButton from "./playButton"
 
+/**
+ * AlbumDetail 컴포넌트
+ *
+ * @param {Object} props
+ * @param {AlbumType} props.album
+ * @param {() => void} props.onClose
+ *
+ * @returns {JSX.Element} 앨범 상세 정보와 YouTube 플레이어를 포함한 모달
+ */
 const AlbumDetail = ({ album, onClose }: AlbumDetailProps) => {
     const { player, isPlaying, playerRef } = useYouTubePlayer(album.id)
 

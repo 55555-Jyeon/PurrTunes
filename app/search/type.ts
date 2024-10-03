@@ -18,10 +18,3 @@ export type Thumbnail = {
 export type SearchPageProps = {
     searchParams: { q?: string }
 }
-
-declare global {
-    interface Window {
-        YT: any
-        onYouTubeIframeAPIReady: () => void
-    }
-}

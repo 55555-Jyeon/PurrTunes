@@ -1,9 +1,17 @@
 import { YouTubeEvent } from "@/app/_components/albumDetail/type"
 import { useCallback, useEffect, useRef, useState } from "react"
+import { YTPlayer } from "./type"
+
+/**
+ * YouTube 플레이어 초기화 및 제어할 수 있는 커스텀 훅
+ *
+ * @param {string} videoId
+ * @returns {{}}
+ */
 
 export const useYouTubePlayer = (videoId: string) => {
     const [isPlaying, setIsPlaying] = useState(false)
-    const [player, setPlayer] = useState<any>(null)
+    const [player, setPlayer] = useState<YTPlayer | null>(null)
     const playerRef = useRef<HTMLDivElement>(null)
 
     const initPlayer = useCallback(() => {
@@ -14,8 +22,7 @@ export const useYouTubePlayer = (videoId: string) => {
                 videoId: videoId || "",
                 events: {
                     onReady: (event: YouTubeEvent) => {
-                        console.log("Player is ready")
-                        setPlayer(event.target)
+                        setPlayer(event.target as unknown as YTPlayer)
                     },
                     onStateChange: (e: YouTubeEvent) => {
                         setIsPlaying(e.data === window.YT.PlayerState.PLAYING)
@@ -30,7 +37,6 @@ export const useYouTubePlayer = (videoId: string) => {
         let isMounted = true
 
         if (!window.YT) {
-            console.log("Loading YouTube IFrame API")
             const tag = document.createElement("script")
             tag.src = "https://www.youtube.com/iframe_api"
             const firstScriptTag = document.getElementsByTagName("script")[0]

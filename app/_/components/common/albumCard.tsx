@@ -12,7 +12,7 @@ const AlbumCard = ({ album, onClick }: AlbumCardProps) => {
     }
 
     return (
-        <div className="w-[300px] h-[300px] overflow-hidden relative group cursor-pointer" onClick={handleClick}>
+        <div className="size-[300px] overflow-hidden relative group cursor-pointer" onClick={handleClick}>
             <Image
                 fill
                 sizes="300px"

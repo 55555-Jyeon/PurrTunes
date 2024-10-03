@@ -10,10 +10,7 @@ import { PlayButtonProps } from "./type"
  */
 const PlayButton = ({ togglePlay, isPlaying }: PlayButtonProps) => {
     return (
-        <button
-            onClick={togglePlay}
-            className="bg-white text-black rounded-full p-3 hover:bg-gray-200 transition-colors duration-200"
-        >
+        <button onClick={togglePlay} className="bg-SYSTEM-white text-SYSTEM-black rounded-full p-3">
             {isPlaying ? <Pause /> : <Play />}
         </button>
     )

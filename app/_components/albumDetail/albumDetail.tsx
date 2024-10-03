@@ -28,12 +28,12 @@ const AlbumDetail = ({ album, onClose }: AlbumDetailProps) => {
 
     return (
         <div className="fixed inset-0 z-50 overflow-hidden">
-            <div className="w-[500px] h-[500px] absolute bottom-0 right-0">
+            <div className="size-[500px] absolute bottom-0 right-0">
                 <div
-                    className="w-full h-full bg-cover bg-center blur-md"
+                    className="size-full bg-cover bg-center blur-md"
                     style={{ backgroundImage: `url(${album.thumbnail?.high?.url})` }}
-                ></div>
-                <div className="w-[500px] h-[500px] absolute bottom-0 right-0 bg-black bg-opacity-30"></div>
+                />
+                <div className="size-full absolute bottom-0 right-0 bg-SYSTEM-black bg-opacity-30" />
 
                 <AlbumImage src={album.thumbnail?.high?.url || ""} alt={album.title} />
 
@@ -41,7 +41,7 @@ const AlbumDetail = ({ album, onClose }: AlbumDetailProps) => {
 
                 <div className="absolute bottom-10 left-10 z-20">
                     <PlayButton togglePlay={togglePlay} isPlaying={isPlaying} />
-                    <span className="text-white ml-4 text-lg">{album.title}</span>
+                    <span className="text-SYSTEM-white ml-4 text-lg">{album.title}</span>
                 </div>
             </div>
             <div ref={playerRef} className="hidden"></div>

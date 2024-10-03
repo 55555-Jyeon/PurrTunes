@@ -23,23 +23,27 @@ export const useYouTubePlayer = (videoId: string) => {
     const [player, setPlayer] = useState<YTPlayer | null>(null)
     const playerRef = useRef<HTMLDivElement>(null)
 
+    const handlePlayerReady = useCallback((event: YouTubeEvent) => {
+        setPlayer(event.target as unknown as YTPlayer)
+    }, [])
+
+    const handlePlayerStateChange = useCallback((event: YouTubeEvent) => {
+        setIsPlaying(event.data === window.YT.PlayerState.PLAYING)
+    }, [])
+
     const initPlayer = useCallback(() => {
-        if (playerRef.current && window.YT && window.YT.Player) {
-            const newPlayer = new window.YT.Player(playerRef.current, {
-                height: "360",
-                width: "640",
-                videoId: videoId || "",
-                events: {
-                    onReady: (event: YouTubeEvent) => {
-                        setPlayer(event.target as unknown as YTPlayer)
-                    },
-                    onStateChange: (e: YouTubeEvent) => {
-                        setIsPlaying(e.data === window.YT.PlayerState.PLAYING)
-                    },
-                },
-            })
-            setPlayer(newPlayer)
-        }
+        if (!playerRef.current && !window.YT && !window.YT.player) return
+
+        const newPlayer = new window.YT.Player(playerRef.current, {
+            height: "360",
+            width: "640",
+            videoId: videoId || "",
+            events: {
+                onReady: handlePlayerReady,
+                onStateChange: handlePlayerStateChange,
+            },
+        })
+        setPlayer(newPlayer)
     }, [videoId])
 
     useEffect(() => {

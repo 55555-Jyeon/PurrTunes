@@ -29,7 +29,7 @@ const CatLayout = ({ children }: CatLayoutProps) => {
     return (
         <>
             {children}
-            <div className="fixed bottom-0 left-0 w-full h-40  overflow-hidden z-50">
+            <div className="fixed top-0 left-0 w-full h-40  overflow-hidden z-50">
                 <div className="relative w-full h-full">
                     <div
                         className="absolute bottom-0 transition-all duration-[50ms] ease-linear"

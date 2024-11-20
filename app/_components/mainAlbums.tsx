@@ -27,8 +27,6 @@ const MainAlbums = () => {
         setSelectAlbum(null)
     }
 
-    console.log(albums)
-
     if (error) return <div>추천 앨범을 가져오는 중 오류가 발생했습니다.</div>
     if (isLoading) return <div>Loading...</div>
     if (!albums || albums.length === 0) return <div>추천 앨범이 없습니다.</div>

@@ -38,7 +38,7 @@ const MainAlbums = () => {
                 <div className="w-[1335px] h-[644px] grid grid-cols-4 gap-4">
                     {albums.map((album, index) => (
                         <AlbumCard
-                            key={album.id ? album.id : index}
+                            key={album.id.videoId ? album.id.videoId : index}
                             album={album}
                             onClick={() => handleAlbumClick(album)}
                         />

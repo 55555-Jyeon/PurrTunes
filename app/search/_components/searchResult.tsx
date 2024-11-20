@@ -6,6 +6,7 @@ import { fetchSearchResult } from "../../_/api/youtubeAPI"
 import { AlbumType } from "@/app/search/type"
 import { useEffect, useState } from "react"
 import AlbumCard from "@/app/_/components/common/albumCard"
+import AlbumDetail from "@/app/_components/albumDetail/albumDetail"
 
 /**
  * SearchResult 컴포넌트
@@ -21,38 +22,47 @@ import AlbumCard from "@/app/_/components/common/albumCard"
  */
 
 const SearchResult = ({ query, initialResults }: SearchResultProps) => {
-    const [isClient, setIsClient] = useState(false)
-
-    useEffect(() => {
-        setIsClient(true)
-    }, [])
+    const [selectAlbum, setSelectAlbum] = useState<AlbumType | null>(null)
 
     const {
         data: results,
         error,
         isLoading,
-    } = useSWR<AlbumType[]>(isClient ? [query] : null, () => fetchSearchResult(query), {
+    } = useSWR<AlbumType[]>([query], () => fetchSearchResult(query), {
         fallbackData: initialResults,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,
     })
+
+    console.log(results)
+
+    const handleAlbumClick = (album: AlbumType) => {
+        setSelectAlbum(album)
+    }
+
+    const handleCloseModal = () => {
+        setSelectAlbum(null)
+    }
 
     if (error) return <div>검색 결과를 가져오는 중 오류가 발생했습니다.</div>
     if (isLoading) return <div>Loading...</div>
     if (!results || results.length === 0) return <div>검색 결과가 없습니다.</div>
 
     return (
-        <div className="my-20">
-            <h1 className="text-3xl text-GREY-70 mb-10">
-                <span className="text-SYSTEM-OrientalPink">{query}</span>에 대한 검색 결과{" "}
-                <span className="text-SYSTEM-OrientalPink">({results.length})</span>
-            </h1>
-            <div className="grid grid-cols-4 gap-4">
-                {results.map(result => (
-                    <AlbumCard key={result.id} album={result} />
-                ))}
+        <>
+            <div className="my-20">
+                <h1 className="text-3xl text-GREY-70 mb-10">
+                    <span className="text-SYSTEM-OrientalPink">{query}</span>에 대한 검색 결과{" "}
+                    <span className="text-SYSTEM-OrientalPink">({results.length})</span>
+                </h1>
+                <div className="grid grid-cols-4 gap-4">
+                    {results.map(result => (
+                        <AlbumCard key={result.id.videoId} album={result} onClick={() => handleAlbumClick(result)} />
+                    ))}
+                </div>
             </div>
-        </div>
+            {selectAlbum && <AlbumDetail album={selectAlbum} onClose={handleCloseModal} />}
+        </>
     )
 }
 

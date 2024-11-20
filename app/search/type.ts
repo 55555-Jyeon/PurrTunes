@@ -1,7 +1,10 @@
 import { YouTubeThumbnail } from "../_/api/type"
 
 export type AlbumType = {
-    id: string
+    id: {
+        kind: string
+        videoId: string
+    }
     title: string
     thumbnail: Thumbnail
     description: string

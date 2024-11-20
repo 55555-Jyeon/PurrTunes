@@ -7,6 +7,7 @@ import { AlbumType } from "@/app/search/type"
 import { useEffect, useState } from "react"
 import AlbumCard from "@/app/_/components/common/albumCard"
 import AlbumDetail from "@/app/_components/albumDetail/albumDetail"
+import { getVideoId } from "@/app/_/utils/getVideoId"
 
 /**
  * SearchResult 컴포넌트
@@ -34,8 +35,6 @@ const SearchResult = ({ query, initialResults }: SearchResultProps) => {
         revalidateOnReconnect: false,
     })
 
-    console.log(results)
-
     const handleAlbumClick = (album: AlbumType) => {
         setSelectAlbum(album)
     }
@@ -57,7 +56,11 @@ const SearchResult = ({ query, initialResults }: SearchResultProps) => {
                 </h1>
                 <div className="grid grid-cols-4 gap-4">
                     {results.map(result => (
-                        <AlbumCard key={result.id.videoId} album={result} onClick={() => handleAlbumClick(result)} />
+                        <AlbumCard
+                            key={getVideoId(result.id)}
+                            album={result}
+                            onClick={() => handleAlbumClick(result)}
+                        />
                     ))}
                 </div>
             </div>

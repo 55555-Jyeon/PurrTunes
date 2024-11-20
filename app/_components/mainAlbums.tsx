@@ -27,6 +27,8 @@ const MainAlbums = () => {
         setSelectAlbum(null)
     }
 
+    console.log(albums)
+
     if (error) return <div>추천 앨범을 가져오는 중 오류가 발생했습니다.</div>
     if (isLoading) return <div>Loading...</div>
     if (!albums || albums.length === 0) return <div>추천 앨범이 없습니다.</div>
@@ -37,11 +39,7 @@ const MainAlbums = () => {
                 <h1 className="text-3xl text-GREY-70 mb-10">인기 재생 목록</h1>
                 <div className="w-[1335px] h-[644px] grid grid-cols-4 gap-4">
                     {albums.map((album, index) => (
-                        <AlbumCard
-                            key={album.id.videoId ? album.id.videoId : index}
-                            album={album}
-                            onClick={() => handleAlbumClick(album)}
-                        />
+                        <AlbumCard key={index} album={album} onClick={() => handleAlbumClick(album)} />
                     ))}
                 </div>
             </div>

@@ -37,11 +37,7 @@ const MainAlbums = () => {
                 <h1 className="text-3xl text-GREY-70 mb-10">인기 재생 목록</h1>
                 <div className="w-[1335px] h-[644px] grid grid-cols-4 gap-4">
                     {albums.map((album, index) => (
-                        <AlbumCard
-                            key={album.id ? album.id : index}
-                            album={album}
-                            onClick={() => handleAlbumClick(album)}
-                        />
+                        <AlbumCard key={index} album={album} onClick={() => handleAlbumClick(album)} />
                     ))}
                 </div>
             </div>
